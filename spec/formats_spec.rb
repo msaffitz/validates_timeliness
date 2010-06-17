@@ -69,7 +69,9 @@ describe ValidatesTimeliness::Formats do
         'd-m-yy'     => {:pass => ['1-2-01', '1-02-00', '01-02-2000'], :fail => ['1-2-0', '1/2/01']},
         'd.m.yy'     => {:pass => ['1.2.01', '1.02.00', '01.02.2000'], :fail => ['1.2.0', '1/2/01']},
         'd mmm yy'   => {:pass => ['1 Feb 00', '1 Feb 2000', '1 February 00', '01 February 2000'],
-                          :fail => ['1 Fe 00', 'Feb 1 2000', '1 Feb 0']}
+                          :fail => ['1 Fe 00', 'Feb 1 2000', '1 Feb 0']},
+        'yy-m-d'     => {:pass => ['01-2-1', '00-02-1', '2000-02-01', '2010-1-31'], :fail => ['0-2-1', '1/2/01']},
+        'm.yy.d'     => {:pass => ['2.01.1', '02.00.1', '02.2000.01', '1.2010.31'], :fail => ['2-0-1', '1/2/01']},
       }
       format_tests.each do |format, values|
         it "should correctly validate dates in format '#{format}'" do

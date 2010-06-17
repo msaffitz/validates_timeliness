@@ -128,7 +128,7 @@ module ValidatesTimeliness
     # is required. The first capture group will be considered a literal and put
     # into the validation regexp string as-is. This is a hack.
     @@format_tokens = [
-      { 'd'    => [ /(\A|[^d])d{1}(?=[^d])/, '(\d{1,2})', :day ] }, #/
+      { 'd'    => [ /(\A|[^d])d{1}(\Z|(?=[^d]))/, '(\d{1,2})', :day ] }, #/
       { 'ddd'  => [ /d{3,}/, '(\w{3,9})' ] },
       { 'dd'   => [ /d{2,}/, '(\d{2})',   :day ] },
       { 'mmm'  => [ /m{3,}/, '(\w{3,9})', :month ] },
